@@ -1,0 +1,28 @@
+####################
+#macro (generateParam $paramArray)
+#foreach ($attr in $paramArray)
+#if ($velocityCount==1)$attr[1]#else,$attr[1]#end
+#end
+#end
+####################
+#macro (toUpperCase $str)$str.substring(0,1).toUpperCase()$str.substring(1)#end
+#macro (toLowerCase $str)$str.substring(0,1).toLowerCase()$str.substring(1)#end
+####################
+#macro (generateTH $paramArray)
+#foreach ($attr in $paramArray)<th>#if (${attr[1]}!="id")#toUpperCase(${attr[1]})</th>#end#end
+#end
+####################
+#macro (generateTD $className $paramArray)
+#foreach ($attr in $paramArray)#if(${attr[1]}!="id")<td>${${className}.${attr[1]}}</td>#end#end
+#end
+####################
+#macro (generateLabelAndInput $className $paramArray $modify)
+#if ($modify=="modify")
+<input name="id" value="${${className}.id }" type="hidden" />
+#end
+#foreach($attr in $paramArray)
+#if (${attr[1]}!="id")
+	<label>#toUpperCase($attr[1])</label> : <input name="${attr[1]}" value="${${className}.${attr[1]}}" /><br/>
+#end
+#end
+#end

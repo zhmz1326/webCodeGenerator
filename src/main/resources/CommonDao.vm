@@ -1,0 +1,6 @@
+package $packageName;
+
+public interface CommonDao<T> {
+    T select(int id);
+    boolean insert(T t);
+}

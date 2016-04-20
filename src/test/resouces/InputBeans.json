@@ -1,0 +1,26 @@
+{
+  "model": [
+    {
+      "name": "News",
+      "column": [
+{"name": "news_id","type":"int(11) auto_increment"},
+{"name": "title","type":"varchar(500)"},
+{"name": "author","type":"varchar(50)"},
+{"name": "summary","type":"varchar(500)"},
+{"name": "content","type":"mediumtext"},
+{"name": "tag","type":"varchar(500)"},
+{"name": "original_link","type":"varchar(500)"},
+{"name": "cover_image_url","type":"varchar(500)"},
+{"name": "count","type":"int(11)"},
+{"name": "is_top_news","type":"tinyint(1)"},
+{"name": "cover_image_id","type":"int(11)"},
+{"name": "cover_show_in_content","type":"tinyint(1)"},
+{"name": "create_time","type":"timestamp"},
+{"name": "update_time","type":"timestamp"},
+{"name": "create_user","type":"varchar(50)"},
+{"name": "update_user","type":"varchar(50)"},
+{"name": "invalid","type":"tinyint(1)"}
+      ]
+    }
+  ]
+}

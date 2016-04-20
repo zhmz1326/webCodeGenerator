@@ -1,0 +1,23 @@
+#parse ("macro.vm")
+package ${packageName}.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ${packageName}.dao.${className}Dao;
+import ${packageName}.bean.${className};
+import ${packageName}.service.${className}Service;
+
+@Service
+public class ${className}ServiceImpl implements ${className}Service {
+
+    @Autowired
+    private ${className}Dao<${className}Bean> #toLowerCase(${className})Dao;
+    
+
+    @Transactional(readOnly = true)
+    public ${className}Bean get(int id) {
+        return this.#toLowerCase(${className})Dao.select(id);
+    }
+}

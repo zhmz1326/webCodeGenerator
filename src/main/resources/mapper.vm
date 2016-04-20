@@ -1,0 +1,31 @@
+#parse ("macro.vm")
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${packageName}.dao.${className}Dao">
+
+    <sql id="query_columns">
+    	#foreach ($attr in ${attrs})
+    		${attr[0]} as ${attr[1]} #if($foreach.hasNext),#end
+    	#end    	
+    </sql>
+    <select id="select" parameterType="int" resultType="${packageName}.bean.${className}Bean">
+        SELECT
+        <include refid="query_columns"/>
+        FROM ${className}
+        WHERE ${attrs[0][0]} = #{id};
+    </select>
+
+    <insert id="insert" parameterType="${packageName}.bean.${className}Bean" keyProperty="${attrs[0][1]}" useGeneratedKeys="true">
+        INSERT INTO ${className} (
+        #foreach ($attr in ${attrs})
+    		${attr[0]} #if( $foreach.hasNext ),#end
+    	#end 
+        )
+        VALUES (
+	        #foreach ($attr in ${attrs})
+	    		#{${attr[1]}} #if( $foreach.hasNext ),#end
+	    	#end 
+        );
+    </insert>
+
+</mapper>

@@ -1,0 +1,22 @@
+#parse ("macro.vm")
+package $packageName;
+
+public class ${className}Bean extends CommonBean {
+
+#foreach ($attr in ${attrs})
+	private ${attr[0]} ${attr[1]};
+#end
+
+#foreach ($attr in ${attrs})
+	#set($attrName = ${attr[1]})
+	#set($AttrName = "#toUpperCase($attrName)")
+	public ${attr[0]} get${AttrName}() {
+		return ${attr[1]};
+	}
+
+	public void set${AttrName}(${attr[0]} ${attr[1]}) {
+		this.${attr[1]} = ${attr[1]};
+	}
+#end
+
+}
